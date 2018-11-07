@@ -34,7 +34,7 @@ function allVer(min, max, sum){
 	obj.max = max;
 	obj.sum = sum;
 	obj.wrAll = function() {
-		alert("Min = " + min + "; " + "Max = " + max + "; " +  "Sum = " + sum);
+		console.log("Min = " + min + "; " + "Max = " + max + "; " +  "Sum = " + sum);
 	}
 	return obj;
 }
