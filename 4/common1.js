@@ -1,21 +1,12 @@
 var arr = ['g', 'd', 'r'];
 
-
-function wer(ar){
+Array.prototype.wer = function()
+{
 	var obj = {};
-	var a = '';
-	for(var i=0; i<ar.length; i++){
-		a = ar[i];
-		obj[a] = i;
-		a = '';
-		
+	for(var i=0; i<this.length; i++)
+	{
+		obj[this[i]] = i;
 	}
 	return obj;
-	console.log(obj);
 }
 
-console.log(arr);
-console.log(wer(arr));
-/*for(var k in wer(arr)){
-	console.log(k + ":" + wer(arr)[k]);
-	}*/

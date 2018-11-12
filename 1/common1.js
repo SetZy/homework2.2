@@ -1,20 +1,23 @@
-var newArr = [1,undefined,3,5,-3];
-var min = newArr[0];
-var max = min;
-var sum = 0;
-var sumAr = [];
-for(var i = 0; i < newArr.length; i++){
-	if( isNaN(newArr[i]) || typeof(newArr[i]) === undefined){
-		i+=1;
+Array.prototype.getAll = function() {
+	this.arr = [];
+	this.min = 0;
+	this.max = 0;
+	this.summ = 0;
+	for(var i = 0; i < this.length; i++) {
+		if(!this[i]) {
+			i += 1;
+		}
+		if(this[i] < this.min)
+			this.min = this[i];
+		if(this[i] > this.max)
+			this.max = this[i];
+		this.summ += this[i]; 
 	}
-	if (newArr[i] > max) max = newArr[i];
-	if (newArr[i] < min) min = newArr[i];
-	sum += newArr[i];
+	this.arr.push(this.min,this.max,this.summ);
+	return this.arr;
 }
-sumAr.push(min,max,sum);
 
-console.log(min);
-console.log(max);
-console.log(sum);
-console.log(sumAr);
+var newArr = [1,undefined,3,5,-3];
+
+alert(newArr.getAll());
 

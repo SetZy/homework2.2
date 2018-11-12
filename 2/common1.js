@@ -1,46 +1,53 @@
 
+Array.prototype.replaceM = function(elemMin, elemMax){ 		//method who replace min and max
+	var minIndex = 0;
+	var maxIndex = 0;
+	for(var i = 0; i < this.length; i++){
+		if(!this[i]){
+			i += 1;
+		}
+		if(this[i] == elemMin){
+			minIndex = i;
+
+		}
+		if (this[i] == elemMax){
+			maxIndex = i;
+		}
+	}
+	var a = this[minIndex];
+		this[minIndex] = this[maxIndex];
+		this[maxIndex] = a;
+		
+}
+Array.prototype.sortW = function() {					//method who find min, max, sum and add all to new array
+	this.min = 0;
+	this.max = 0;
+	this.summ = 0;
+	this.arr = [];
+	
+	for(var i = 0; i < this.length; i++) {
+		if(!this[i]){
+			i += 1;
+		}
+		if(this[i] < this.min){
+			this.min = this[i];
+		}
+		if(this[i] > this.max){
+			this.max = this[i];
+		}
+		this.summ += this[i];
+	}
+	this.arr.push(this.min,this.max,this.summ);
+	this.arr.replaceM(this.min, this.max);				//for new array used method replace
+	return this.arr;
+}
+
 var newArr = [1,undefined,3,5,-3];
-console.log(newArr);
 
-var sum = 0;
-var min = newArr[0];
-var max = min;
-var minIndex = 0;
-var maxIndex = 0;
-
-for(i = 0; i < newArr.length; i++){
-	if( isNaN(newArr[i]) || typeof(newArr[i]) === undefined){
-		i+=1;
-	}
-	if (newArr[i] > max){
-		max = newArr[i]; 	maxIndex = i;
-	} 
-	if (newArr[i] < min){
-		min = newArr[i];	minIndex = i;
-	} 
-	sum +=newArr[i]
-}
-
-	a = newArr[minIndex];
-	newArr[minIndex] = newArr[maxIndex];
-	newArr[maxIndex] = a;
-
-console.log(newArr);
+alert(newArr.sortW());
 
 
-function allVer(min, max, sum){
-	var obj = {};
-	obj.min = min;
-	obj.max = max;
-	obj.sum = sum;
-	obj.wrAll = function() {
-		console.log("Min = " + min + "; " + "Max = " + max + "; " +  "Sum = " + sum);
-	}
-	return obj;
-}
-console.log()
-var sAll = new allVer(newArr[maxIndex], newArr[minIndex], sum);
-sAll.wrAll();
+
 
 
 
